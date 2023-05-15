@@ -22,14 +22,15 @@ num_images = 50
 if not os.path.exists(dest_dir):
     os.makedirs(dest_dir)
 
-
+if not os.path.exists(dest_dir2):
+    os.makedirs(dest_dir2)
 
 image_files = [os.path.join(src_dir, f) for f in os.listdir(src_dir) if f.endswith('.jpg')]
 # Randomly shuffle the list of image files
 
 
 #shuffle in below line you should run only once
-#random.shuffle(image_files)
+random.shuffle(image_files)
 # Extract the first num_images from the shuffled list
 selected_images = image_files[:num_images]
 

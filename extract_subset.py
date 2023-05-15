@@ -10,10 +10,10 @@ import random
 import shutil
 from glob import glob
 
-src_dir = 'C:/Users/anadjj/OneDrive - Comtrade Group/Neural networks/projekat/code/polypsIdiot/PNG/Original'
-dest_dir = 'C:/Users/anadjj/OneDrive - Comtrade Group/Neural networks/u net - Final/u-net-4_5_2023/dataset1/images'
+src_dir = 'C:/Users/anadjj/OneDrive - Comtrade Group/Computer science/Neural networks/projekat/code/polypsIdiot/PNG/Original'
+dest_dir = 'C:/Users/anadjj/OneDrive - Comtrade Group/Computer science/Neural networks/u net - Final/u-net-4_5_2023/dataset1/images'
 
-dest_dir2 = 'C:/Users/anadjj/OneDrive - Comtrade Group/Neural networks/u net - Final/u-net-4_5_2023/dataset1/masks'
+dest_dir2 = 'C:/Users/anadjj/OneDrive - Comtrade Group/Computer science/Neural networks/u net - Final/u-net-4_5_2023/dataset1/masks'
 
 # Set the number of images to extract
 num_images = 50
@@ -22,6 +22,8 @@ num_images = 50
 if not os.path.exists(dest_dir):
     os.makedirs(dest_dir)
 
+if not os.path.exists(dest_dir2):
+    os.makedirs(dest_dir2)
 
 
 image_files = [os.path.join(src_dir, f) for f in os.listdir(src_dir) if f.endswith('.png')]
@@ -29,7 +31,7 @@ image_files = [os.path.join(src_dir, f) for f in os.listdir(src_dir) if f.endswi
 
 
 #shuffle in below line you should run only once
-#random.shuffle(image_files)
+random.shuffle(image_files)
 # Extract the first num_images from the shuffled list
 selected_images = image_files[:num_images]
 
@@ -45,11 +47,13 @@ selected_images.sort()
 
 for i, image_name in enumerate(selected_images):
     name = image_name.split("\\")[-1]
-    src2 = 'C:/Users/anadjj/OneDrive - Comtrade Group/Neural networks/projekat/code/polypsIdiot/PNG/groundTruth/' + name
+    src2 = 'C:/Users/anadjj/OneDrive - Comtrade Group/Computer science/Neural networks/projekat/code/polypsIdiot/PNG/groundTruth/' + name
     shutil.copy(src2, dest_dir2)
     
-final_images = os.listdir('C:/Users/anadjj/OneDrive - Comtrade Group/Neural networks/u net - Final/u-net-4_5_2023/dataset1/images')
-final_masks = os.listdir('C:/Users/anadjj/OneDrive - Comtrade Group/Neural networks/u net - Final/u-net-4_5_2023/dataset1/masks')
+final_images = os.listdir('C:/Users/anadjj/OneDrive - Comtrade Group/Computer science/Neural networks/u net - Final/u-net-4_5_2023/dataset1/images')
+final_masks = os.listdir('C:/Users/anadjj/OneDrive - Comtrade Group/Computer science/Neural networks/u net - Final/u-net-4_5_2023/dataset1/masks')
+
+
 
 final_images.sort()
 final_masks.sort()
